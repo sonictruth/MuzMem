@@ -8,6 +8,7 @@
  *
  * Main module of the application.
  */
+
 angular
   .module('muzpuzApp', [
     'ngAnimate',
@@ -18,6 +19,8 @@ angular
     'ngTouch'
   ])
   .config(function ($routeProvider) {
+    // test
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
