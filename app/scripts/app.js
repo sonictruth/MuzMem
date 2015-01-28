@@ -9,6 +9,9 @@
  * Main module of the application.
  */
 
+angular.module('caca',[] );
+
+
 angular
   .module('muzpuzApp', [
     'ngAnimate',
@@ -18,8 +21,10 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ( $routeProvider) {
     // test
+
+    console.log('muzpuzApp', '>>>',$routeProvider);
 
     $routeProvider
       .when('/', {

@@ -9,6 +9,7 @@
  */
 angular.module('muzpuzApp')
   .controller('MainCtrl', function ($scope) {
+  	console.log("Z1",$scope);
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

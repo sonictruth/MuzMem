@@ -9,9 +9,7 @@
  */
 angular.module('muzpuzApp')
   .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
+    console.log('CA',$scope);
   });
+
