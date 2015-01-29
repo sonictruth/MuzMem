@@ -104,7 +104,7 @@
         $scope.grid = grid;
 
         $scope.startTimer();
-        // preload sounds
+        // preload sounds and img
 
       
     };
@@ -150,6 +150,7 @@
        if(card.flipped){
             audio.pause();
        } else{
+       	    $scope.currentTitle = card.artist + ' -  ' + card.title  ;
             audio.play();
        }
        card.flipped = !card.flipped;       
