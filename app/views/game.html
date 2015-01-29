@@ -1,1 +1,26 @@
-game
+ <h2>{{genreName|uppercase}}</h2>
+ <h2>Seconds left: {{counter}}</h2>
+
+  <div>Pairs left to match: {{game.unmatchedPairs}}</div>
+  <div>Matching: {{game.firstPick.title}}</div>
+
+
+  <table>
+    <tr ng-repeat="row in game.grid">
+      <td ng-repeat="tile in row" ng-click="game.flipTile(tile)">
+
+  
+        <div class="container">
+          <div class="card" ng-class="{flipped: tile.flipped}">
+              <img class="front" ng-src="img/back.png">
+              <img class="back" ng-src="img/{{tile.title}}.png">
+          </div>
+        </div>
+
+      </td>
+    </tr>
+  </table>
+
+
+ <button type="submit" class="btn btn-primary"  ng-click="startGame()">Retry</button>
+ <button type="submit" class="btn btn-primary"  ng-click="goBack()">Go Back</button>

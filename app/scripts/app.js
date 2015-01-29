@@ -26,7 +26,7 @@
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
     })
-    .when('/game', {
+    .when('/game/:genreId?', {
       templateUrl: 'views/game.html',
       controller: 'GameCtrl'
     })
