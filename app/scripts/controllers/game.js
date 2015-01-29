@@ -71,20 +71,27 @@
 
  	$scope.startGame = function(){
     	// init
+    	$('#game-screen').hide();
+    	$('#game-loader').show();
     	var cardDeck = [];
         var grid = [];
-        card1 = null;
-        card2 = null;
+        
+           card1 = null;	
+        
+        
+           card2 = null;
+        
+        
         audio.pause();
 
-        // shuffle all 100 songs 
+        // shuffle all 100 cards 
     	shuffle(allCards);
 
-        // current game cards
+        // pick current game cards
     	for(var i=0;i< boardSize/2;i++){    		
     		var c = allCards[i];
     		cardDeck.push( c );
-    		cardDeck.push( $.extend({}, c) );
+    		cardDeck.push( $.extend({}, c) ); // clone
     	}
 
         //create grid
@@ -93,35 +100,52 @@
         
         var dim = Math.sqrt(cardDeck.length);
 
+          
+       // preload sounds and img
+        var toLoad = boardSize;
+        var preloader=function(){ // FIXME: use a safer preloader
+        	toLoad -- ;
+        	if(toLoad===0){
+   		    	
+		    	$('#game-loader').hide();
+		    	$('#game-screen').fadeIn();
+
+        		$scope.startTimer();		
+
+        	}
+        };
+        
+
         for (var row = 0; row < dim; row++) {
         	grid[row] = [];
         	for (var col = 0; col < dim; col++) {
         		var card = cardDeck.pop();        		
         		card.flipped = false;        		
+        		card.audio = new Audio();
+        		card.audio.addEventListener('canplaythrough', preloader, false); 
+        		card.audio.src = card.sound;
         		grid[row][col] = card;
         	}
         }
         
         
         $scope.grid = grid;
-
-        $scope.startTimer();
-        // preload sounds and img
-
+ 
       
     };
 
     $scope.gameOver = function(){
     	//alert('Game Over!');
+    	$scope.startGame();
     };
 
     $scope.startTimer = function(){
     	$interval.cancel(intervalId);
     	$scope.counter = maxTimer ;
     	
-    	intervalId= $interval(function(){
+    	intervalId= $interval(function(){ // FIXME: better use setTimeout
     		$scope.counter --;
-    		if($scope.counter===0){
+    		if($scope.counter<=0){
     			$scope.gameOver();
     		}
 
@@ -148,12 +172,12 @@
 
    $scope.flipCard = function(card){
 
-	   audio.src = card.sound;       
+	   
        if(card.flipped){
-            audio.pause();
+            card.audio.pause();
        } else{
        	    $scope.currentTitle = card.artist + ' -  ' + card.title  ;
-            audio.play();
+            card.audio.play();
        }
        card.flipped = !card.flipped;       
        return card;
