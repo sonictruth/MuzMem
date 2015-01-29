@@ -9,33 +9,28 @@
  * Main module of the application.
  */
 
-angular.module('caca',[] );
 
 
-angular
-  .module('muzpuzApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+ angular
+ .module('muzpuzApp', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch'
   ])
-  .config(function ( $routeProvider) {
-    // test
-
-    console.log('muzpuzApp', '>>>',$routeProvider);
-
+ .config(function ( $routeProvider) {    
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+    .when('/', {
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl'
+    })
+    .when('/game', {
+      templateUrl: 'views/game.html',
+      controller: 'GameCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
   });

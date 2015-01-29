@@ -7,12 +7,8 @@
  * # MainCtrl
  * Controller of the muzpuzApp
  */
+
 angular.module('muzpuzApp')
-  .controller('MainCtrl', function ($scope) {
-  	console.log("Z1",$scope);
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+.controller('MainCtrl', ['$scope', 'MusicGenres', function MainCtrl($scope, MusicGenres){
+	console.log($scope,MusicGenres);
+}]);
