@@ -1,14 +1,14 @@
  <h2>{{genreName|uppercase}}</h2>
  <h2>Seconds left: {{counter}}</h2>
 
-  <div>Pairs left to match: {{game.unmatchedPairs}}</div>
-  <div>Matching: {{game.firstPick.title}}</div>
+  <div>Pairs left to match: {{cardsLeft}}</div>
+  <div>Matching: {{title}}</div>
 
 <button type="submit" class="btn btn-primary"  ng-click="startGame()">Retry</button>
 
   <table class="center">
     <tr ng-repeat="row in grid track by $index">
-      <td ng-repeat="card in row track by $index" ng-click="showHideCard(card)">
+      <td ng-repeat="card in row track by $index" ng-click="clickCard(card)">
          <div class="cardcontainer">
           <div class="card" >
                <img ng-class="{hidecard: card.flipped}" ng-src="http://thumbs.dreamstime.com/x/vinyl-record-blue-label-4246970.jpg"> 

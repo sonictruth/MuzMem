@@ -15,6 +15,10 @@
     var boardSize = 16;
     var intervalId = null;
     var allCards = [];
+    var card1 = null;
+    var card2 = null;
+    var audio = new Audio();
+    
 
 	var shuffle = function shuffle(o){ 
 	    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x){}
@@ -69,6 +73,7 @@
     	// init
     	var cardDeck = [];
         var grid = [];
+        audio.pause();
 
         // shuffle all 100 songs 
     	shuffle(allCards);
@@ -121,13 +126,34 @@
     	},1000, $scope.maxTimer );
     
 
-   var audio = new Audio();
+   
    
 
-   $scope.showHideCard = function(card){
-       audio.src = card.sound;
-       audio.play();
+   $scope.clickCard = function(card){       
+       if(card1===null && card2 ===null){
+       	  card1 = $scope.flipCard(card);
+       }else if(card1!==null && card2 ===null){
+       	  card2 = $scope.flipCard(card);
+       }else if(card1!==null && card2 !==null){
+       	  $scope.flipCard(card1);
+       	  $scope.flipCard(card2);       	
+       	  card1 = $scope.flipCard(card);
+       	  card2 = null;
+       }
+
+
+   };
+
+   $scope.flipCard = function(card){
+
+	   audio.src = card.sound;       
+       if(card.flipped){
+            audio.pause();
+       } else{
+            audio.play();
+       }
        card.flipped = !card.flipped;       
+       return card;
    };
 
 
