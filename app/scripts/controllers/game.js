@@ -40,6 +40,11 @@
  	$scope.counter = maxTimer ; 	
  	$scope.chosenSongs = [];
 
+   	$('#game-screen').hide();
+   	$('#game-loader').show();
+
+    $scope.loadingStatus = 'songs info';
+
  	TopSongs.getSongsByGenre( $scope.genreId ).then(function(data){ 
  		// clean up duplicate 
  		allCards = [];
@@ -74,15 +79,15 @@
     	$('#game-screen').hide();
     	$('#game-loader').show();
     	var cardDeck = [];
-        var grid = [];
-        
-           card1 = null;	
-        
-        
-           card2 = null;
-        
-        
-        audio.pause();
+    	var grid = [];
+
+    	card1 = null;	
+
+
+    	card2 = null;
+
+
+    	audio.pause();
 
         // shuffle all 100 cards 
     	shuffle(allCards);
@@ -105,6 +110,8 @@
         var toLoad = boardSize;
         var preloader=function(){ // FIXME: use a safer preloader
         	toLoad -- ;
+        	
+        	
         	if(toLoad===0){
    		    	
 		    	$('#game-loader').hide();
