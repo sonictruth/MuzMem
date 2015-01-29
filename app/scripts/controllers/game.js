@@ -73,6 +73,8 @@
     	// init
     	var cardDeck = [];
         var grid = [];
+        card1 = null;
+        card2 = null;
         audio.pause();
 
         // shuffle all 100 songs 
