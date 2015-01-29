@@ -14,15 +14,21 @@
     var maxTimer = 120;
     var boardSize = 16;
     var intervalId = null;
-	var shuffleSongs = function shuffle(o){ 
+    var allCards = [];
+
+	var shuffle = function shuffle(o){ 
 	    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x){}
 	    return o;
 	};
 
-  	var Card = function(title,img,sound){
+
+
+  	var Card = function(artist,title,img,sound){
+  		 this.artist = artist;
          this.title = title;
          this.img = img;
          this.sound = sound;
+         this.flipped = false;
   	};
 
  	$scope.genreId = $routeParams.genreId;
@@ -31,7 +37,24 @@
  	$scope.chosenSongs = [];
 
  	TopSongs.getSongsByGenre( $scope.genreId ).then(function(data){ 
- 		$scope.songs = data; 		
+ 		// clean up duplicate 
+ 		allCards = [];
+ 		var urls = [];
+    	for(var i=0;i< data.length;i++){
+    		
+			var sng = data[i];
+    		var title = sng['im:name'].label;
+    		var artist = sng['im:artist'].label;        	
+    		var img = sng['im:image'][2].label;
+    		var snd = sng.link[1].attributes.href;    		
+            
+            var found = $.inArray(img, urls) > -1;
+            if(!found){
+	            urls.push(img);
+	    		allCards.push( new Card(artist, title, img, snd) );
+    		}
+    	} 		
+    	console.log(allCards);
  		$scope.startGame();
  	});
  	var result = $.grep(MusicGenres.genres, function(e){ return e.id === $scope.genreId; });
@@ -44,20 +67,43 @@
 
  	$scope.startGame = function(){
     	// init
-    	$scope.chosenSongs = [];
-      
+    	var cardDeck = [];
+        var grid = [];
 
-        shuffleSongs($scope.songs);
+        // shuffle all 100 songs 
+    	shuffle(allCards);
 
-        for(var i=0;i<$scope.boardSize;i++){
-        	$scope.chosenSongs.push($scope.songs[i]);        	
+        // current game cards
+    	for(var i=0;i< boardSize/2;i++){    		
+    		var c = allCards[i];
+    		cardDeck.push( c );
+    		cardDeck.push( $.extend({}, c) );
+    	}
+
+        //create grid
+        
+        shuffle(cardDeck);
+        
+        var dim = Math.sqrt(cardDeck.length);
+
+        for (var row = 0; row < dim; row++) {
+        	grid[row] = [];
+        	for (var col = 0; col < dim; col++) {
+        		var card = cardDeck.pop();        		
+        		card.flipped = false;        		
+        		grid[row][col] = card;
+        	}
         }
         
-         $scope.startTimer();
-        // preload sounds
         
+        $scope.grid = grid;
+
+        $scope.startTimer();
+        // preload sounds
+
       
     };
+
     $scope.gameOver = function(){
     	//alert('Game Over!');
     };
@@ -75,6 +121,14 @@
     	},1000, $scope.maxTimer );
     
 
+   var audio = new Audio();
+   
+
+   $scope.showHideCard = function(card){
+       audio.src = card.sound;
+       audio.play();
+       card.flipped = !card.flipped;       
+   };
 
 
     $scope.goBack = function(){

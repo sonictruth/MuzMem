@@ -4,23 +4,23 @@
   <div>Pairs left to match: {{game.unmatchedPairs}}</div>
   <div>Matching: {{game.firstPick.title}}</div>
 
+<button type="submit" class="btn btn-primary"  ng-click="startGame()">Retry</button>
 
-  <table>
-    <tr ng-repeat="row in game.grid">
-      <td ng-repeat="tile in row" ng-click="game.flipTile(tile)">
+  <table class="center">
+    <tr ng-repeat="row in grid track by $index">
+      <td ng-repeat="card in row track by $index" ng-click="showHideCard(card)">
+         <div class="cardcontainer">
+          <div class="card" >
+               <img ng-class="{hidecard: card.flipped}" ng-src="http://thumbs.dreamstime.com/x/vinyl-record-blue-label-4246970.jpg"> 
 
-  
-        <div class="container">
-          <div class="card" ng-class="{flipped: tile.flipped}">
-              <img class="front" ng-src="img/back.png">
-              <img class="back" ng-src="img/{{tile.title}}.png">
+              <img ng-class="{hidecard: !card.flipped}" alt="{{card.title}} {{card.artist}}"  ng-src="{{card.img}}"> 
           </div>
-        </div>
+          </div>
 
       </td>
     </tr>
   </table>
 
 
- <button type="submit" class="btn btn-primary"  ng-click="startGame()">Retry</button>
+ 
  <button type="submit" class="btn btn-primary"  ng-click="goBack()">Go Back</button>
