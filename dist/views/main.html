@@ -1,0 +1,1 @@
+<select ng-model="selectedGenre" ng-options="genre.name| uppercase for genre in musicGenres" class="form-control"> </select> <button type="submit" class="btn btn-primary" ng-click="startGame()">Play {{selectedGenre.name| lowercase}} music game!</button>

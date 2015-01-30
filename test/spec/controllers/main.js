@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('muzpuzApp'));
+  beforeEach(module('MuzMemApp'));
  
   var MainCtrl,
     scope;

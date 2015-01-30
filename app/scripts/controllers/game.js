@@ -3,12 +3,12 @@
 
 /**
  * @ngdoc function
- * @name muzpuzApp.controller:GameCtrl
+ * @name MuzMemApp.controller:GameCtrl
  * @description
  * # GameCtrl
- * Controller of the muzpuzApp
+ * Controller of the MuzMemApp
  */
- angular.module('muzpuzApp')
+ angular.module('MuzMemApp')
  .controller('GameCtrl', ['$interval','MusicGenres','$scope','$routeParams','$location','TopSongs',function GameCtrl($interval, MusicGenres, $scope, $routeParams,$location,TopSongs) {
 
     var maxTimer = 120;

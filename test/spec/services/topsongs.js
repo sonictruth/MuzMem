@@ -3,7 +3,7 @@
 describe('Service: TopSongs', function () {
 
   // load the service's module
-  beforeEach(module('muzpuzApp'));
+  beforeEach(module('MuzMemApp'));
 
   // instantiate service
   var TopSongs;

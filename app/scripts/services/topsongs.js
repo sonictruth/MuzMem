@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name muzpuzApp.TopSongs
+ * @name MuzMemApp.TopSongs
  * @description
  * # TopSongs
- * Service in the muzpuzApp.
+ * Service in the MuzMemApp.
  */
- angular.module('muzpuzApp')
+ angular.module('MuzMemApp')
  .factory('TopSongs', ['$http', '$q',function ($http, $q) {
     var songsFactory = {};
 

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name muzpuzApp.controller:MainCtrl
+ * @name MuzMemApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the muzpuzApp
+ * Controller of the MuzMemApp
  */
 
-angular.module('muzpuzApp')
+angular.module('MuzMemApp')
 .controller('MainCtrl', ['$scope', 'MusicGenres', '$location', function MainCtrl($scope, MusicGenres,$location){
 	$scope.selectedGenre =  MusicGenres.getGenres()[0];
 	$scope.musicGenres = MusicGenres.getGenres();

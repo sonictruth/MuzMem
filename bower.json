@@ -1,5 +1,5 @@
 {
-  "name": "muzpuz",
+  "name": "MuzMem",
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.3.0",

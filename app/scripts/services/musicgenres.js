@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name muzpuzApp.musicGenres
+ * @name MuzMemApp.musicGenres
  * @description
  * # musicGenres
- * Service in the muzpuzApp.
+ * Service in the MuzMemApp.
  */
- angular.module('muzpuzApp')
+ angular.module('MuzMemApp')
  .service('MusicGenres', function () {
     // downloaded from https://rss.itunes.apple.com/data/media-types.json
 

@@ -3,7 +3,7 @@
 describe('Service: musicGenres', function () {
 
   // load the service's module
-  beforeEach(module('muzpuzApp'));
+  beforeEach(module('MuzMemApp'));
 
   // instantiate service
 

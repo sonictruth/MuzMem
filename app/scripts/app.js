@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name muzpuzApp
+ * @name MuzMemApp
  * @description
- * # muzpuzApp
+ * # MuzMemApp
  *
  * Main module of the application.
  */
@@ -12,7 +12,7 @@
 
 
  angular
- .module('muzpuzApp', [
+ .module('MuzMemApp', [
   'ngAnimate',
   'ngCookies',
   'ngResource',
