@@ -5,13 +5,13 @@
 </p></div>
 
 <div class="top-spacer"><p>
-Coose a genre:
+Choose a genre:
 </p></div>
 
-
+<div class="top-spacer">
 <select  id="select-genre" ng-model="selectedGenre"  ng-options="genre.name| uppercase for genre in musicGenres" class="form-control center"> 
 </select>
-
+</div>
 
   <button id="btn-start" type="submit" class="btn btn-success chewyfont"  ng-click="startGame()">Play <span class="glyphicon glyphicon-play"></span></button>
 
