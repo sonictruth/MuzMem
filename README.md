@@ -1,7 +1,6 @@
-# MuzMem
+# Music Memory Game
 
-Memory game using iTunes TOP 100 API.
-Build with: AngularJS / jQuery / Yeoman / Grunt / Bower ...
+Angular.js + iTunes TOP 100 API.
 
 ## Build
 npm install; bower install; grunt serve
